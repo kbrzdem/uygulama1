@@ -1,10 +1,10 @@
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import FormData from './components/form-data'
+import FormData from './Components/form-data'
 import { useState, useEffect } from "react";
-import { BrowserRouter, Router, Route, Switch, useHistory} from 'react-router-dom';
+import { Router, Route, Switch, useHistory} from 'react-router-dom';
 //import { Redirect } from "react-router-dom";
-import Home from './components/home'
+import Home from './Components/home'
 
 //import { withRouter } from 'react-router-dom';
 
