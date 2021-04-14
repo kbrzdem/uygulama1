@@ -1,16 +1,16 @@
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import FormData from './Components/form-data'
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
 } from 'react-router-dom'
 
-import { useHistory } from "react-router-dom";
 //import { Redirect } from "react-router-dom";
 import Home from './Components/home'
+import Card from './Components/card'
 
 //import { withRouter } from 'react-router-dom';
 
@@ -23,65 +23,24 @@ import Home from './Components/home'
  }
 ]*/
 
-const USERDATA = localStorage.getItem('userdata')
-  ? JSON.parse(localStorage.getItem('userdata'))
-  : []
+
 
 
 function App() {
-  const [name, setName] = useState('')
-  const [surname, setSurname] = useState('')
-  const [userdata, setUserdata] = useState(USERDATA)
-  const history = useHistory();
-  
-  const handleName = event => {
-    setName(event.target.value)
-  }
-  const handleSurname = event => {
-    setSurname(event.target.value)
-  }
-
-  const handleSubmitForm = event => {
-    event.preventDefault()
-    if (name !== '' && surname !== '') {
-      const data = { name, surname }
-      setUserdata(data)
-      setName('')
-      setSurname('')
-      history.push("/Home")
-      
-    } else {
-      console.log('Hata')
-    }
-  }
- 
-  useEffect(() => {
-    localStorage.setItem('userdata', JSON.stringify(userdata))
-  }, [userdata])
-
- 
   return (
     <Router>
-
       <main>
         <Switch>
           
             <Route path="/Home" >
-              <Home userdata={userdata} />
+              <Home  />
             </Route>
-          
+            <Route path="/card">
+              <Card />
+            </Route>
             <Route path="/" >
-              <FormData name={name}
-                surname={surname}
-                handleName={handleName}
-                handleSurname={handleSurname}
-                handleSubmitForm={handleSubmitForm} 
-                />
-                
+              <FormData  />     
             </Route>
-         
-
-
         </Switch>
       </main>
     </Router>
